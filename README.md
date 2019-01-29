@@ -47,10 +47,10 @@ docker build . -t lw301-server
 docker rm lw301 --force
 docker run \
         --name lw301 -d \
-	-p __OUTBOUND_IP_ADDR___:80:47265 \
-	-v /var/log/lw301:/log \
-	--restart always \
-      lw301-server lw301_server  --address=0.0.0.0 --log_file_prefix=/log/server.log
+      	--restart always \
+	    -p __OUTBOUND_IP_ADDR___:80:47265 \
+	    -v /var/log/lw301:/log \
+        lw301-server lw301_server  --address=0.0.0.0 --log_file_prefix=/log/server.log
 ```
 
 
