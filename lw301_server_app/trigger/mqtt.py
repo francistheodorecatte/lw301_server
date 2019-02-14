@@ -51,7 +51,7 @@ class MqttTrigger(Trigger):
     async def on_new_data(self, measurement, value):
         v = value._asdict()
 
-        self.client.publish("lw301/{}/{}".format(v['mac'], measurement), json.dumps(v))
+        self.client.publish("lw301/{}_{}/{}".format(v['mac'], v['channel'], measurement), json.dumps(v))
 
     #     # delay processing for next ioloop tick
     #     self.ioloop.add_callback(
