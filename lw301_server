@@ -87,4 +87,8 @@ if __name__ == "__main__":
         ioloop.start()
     except KeyboardInterrupt:
         logger.info('server stopped')
+
+        for t in application.settings['triggers']:
+            t.before_stop()
+
         sys.exit(0)

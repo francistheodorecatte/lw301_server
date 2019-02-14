@@ -44,7 +44,6 @@ class MqttTrigger(Trigger):
         self.client.loop_start()
         # test self.client.publish("lw301/1/2", 10.2)
 
-
     def before_stop(self):
         self.client.loop_stop()
 
