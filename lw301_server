@@ -15,6 +15,7 @@ from lw301_server_app.handler.logging import LoggingHandler
 from lw301_server_app.handler.update import UpdateHandler
 from lw301_server_app.handler import api
 from lw301_server_app.trigger.influxdb import InfluxDbTrigger
+from lw301_server_app.trigger.mqtt import MqttTrigger
 
 logger = logging.getLogger(os.path.basename(__file__).replace('.py', ''))
 
@@ -39,8 +40,10 @@ def define_options():
 
     # trigger options
     define('enable-influxdb', default=False, type=bool, help='enable influxdb trigger')
-    InfluxDbTrigger.add_options()
+    define('enable-mqtt', default=False, type=bool, help='enable mqtt trigger')
 
+    InfluxDbTrigger.add_options()
+    MqttTrigger.add_options()
 
 def parse_options():
     define_options()
@@ -60,6 +63,11 @@ def init_triggers(options: OptionParser, ioloop: IOLoop):
     if options.enable_influxdb:
         logger.info('influxdb trigger enabled')
         triggers.append(InfluxDbTrigger(ioloop, options))
+
+    if options.enable_mqtt:
+        logger.info('mqtt trigger enabled')
+        triggers.append(MqttTrigger(ioloop, options))
+
     return triggers
 
 

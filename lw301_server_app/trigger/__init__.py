@@ -11,6 +11,9 @@ class Trigger:
     async def on_new_data(self, measurement, value):
         pass
 
+    def before_stop(self):
+        pass
+
     @staticmethod
     def add_options():
         pass
