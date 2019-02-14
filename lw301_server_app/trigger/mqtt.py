@@ -1,6 +1,7 @@
 # coding: utf-8
 from logging import getLogger
 import time
+import json
 
 from tornado.ioloop import IOLoop
 from tornado.options import define, OptionParser
@@ -50,7 +51,7 @@ class MqttTrigger(Trigger):
     async def on_new_data(self, measurement, value):
         v = value._asdict()
 
-        self.client.publish("lw301/{}/{}".format(v['mac'], measurement), value)
+        self.client.publish("lw301/{}/{}".format(v['mac'], measurement), json.dumps(v))
 
     #     # delay processing for next ioloop tick
     #     self.ioloop.add_callback(
