@@ -50,6 +50,7 @@ docker run \
       	--restart always \
 	    -p __OUTBOUND_IP_ADDR___:80:47265 \
 	    -v /var/log/lw301:/log \
+	   	--enable-mqtt --mqtt-user=test --mqtt-password=test --mqtt-host=127.0.0.1 \
         lw301-server lw301_server  --address=0.0.0.0 --log_file_prefix=/log/server.log
 ```
 
