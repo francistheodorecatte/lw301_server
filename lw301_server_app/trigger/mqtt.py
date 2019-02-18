@@ -51,7 +51,7 @@ class MqttTrigger(Trigger):
     async def on_new_data(self, measurement, value):
         v = value._asdict()
 
-        ch = "" if v['channel'] is None else "_{}".format(v['channel'])
+        ch = "" if ('channel' not in v or v['channel'] is None) else "_{}".format(v['channel'])
 
         self.client.publish("lw301/{}{}/{}".format(v['mac'], ch, measurement), json.dumps(v))
 
