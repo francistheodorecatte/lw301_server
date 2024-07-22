@@ -41,6 +41,30 @@ class UpdateHandler(lw301_server_app.handler.Base):
                                    relative=body.sensor_values['humidity_relative'])
             ))
 
+        if body.sensor_values and 'wind_direction' in body.sensor_values:
+            values.append((
+                'wind',
+                state.Wind(mac=body.mac, channel=body.channel,
+                                   direction=body.sensor_values['wind_direction'],
+                                   gust=body.sensor_values['wind_gust'],
+                                   average=body.sensor_values['wind_speed'])
+            ))
+
+        if body.sensor_values and 'rain_rate' in body.sensor_values:
+            values.append((
+                'rain',
+                state.Rain(mac=body.mac, channel=body.channel,
+                                   rate=body.sensor_values['rain_rate'],
+                                   total=body.sensor_values['rain_total'])
+            ))
+
+        if body.sensor_values and 'uv_index' in body.sensor_values:
+            values.append((
+		'uv',
+                state.UV(mac=body.mac, channel=body.channel,
+                                   index=body.sensor_values['uv_index'])
+            ))
+
         for measurement, value in values:
             app_state.update_history(measurement, value)
 

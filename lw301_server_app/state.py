@@ -1,12 +1,14 @@
 # coding: utf-8
 import datetime
-from collections import namedtuple
+import collections
 
-Temperature = namedtuple('Temperature', ['mac', 'channel', 'celsius'])
-Humidity = namedtuple('Humidity', ['mac', 'channel', 'relative'])
+Temperature = collections.namedtuple('Temperature', ['mac', 'channel', 'celsius'])
+Humidity = collections.namedtuple('Humidity', ['mac', 'channel', 'relative'])
+Wind = collections.namedtuple('Wind', ['mac', 'channel', 'direction', 'gust', 'average'])
+Rain = collections.namedtuple('Rain', ['mac', 'channel', 'rate', 'total'])
+UV = collections.namedtuple('UV', ['mac', 'channel', 'index'])
 
-
-class Pressure(namedtuple('Pressure', ['mac', 'hPa'])):
+class Pressure(collections.namedtuple('Pressure', ['mac', 'hPa'])):
     @property
     def mmHg(self):
         return int(self.hPa * 0.7500617)
@@ -17,6 +19,9 @@ class State:
         self.temperature_history = []
         self.humidity_history = []
         self.pressure_history = []
+        self.wind_history = []
+        self.rain_history = []
+        self.uv_history = []
         self.last_mac = None
         self._history_limit = history_limit
 

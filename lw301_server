@@ -27,6 +27,9 @@ def build_app(debug=False):
             (r'^/api/history/temperature', api.TemperatureHistoryApiHandler),
             (r'^/api/history/pressure', api.PressureHistoryApiHandler),
             (r'^/api/history/humidity', api.HumidityHistoryApiHandler),
+            (r'^/api/history/wind', api.WindHistoryApiHandler),
+            (r'^/api/history/rain', api.RainHistoryApiHandler),
+            (r'^/api/history/uv', api.UVHistoryApiHandler),
             (r'.*', LoggingHandler)
         ],
         debug=debug

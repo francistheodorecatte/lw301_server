@@ -20,6 +20,26 @@ def _convert_to_positive_int(value):
     except:
         return None
 
+def _convert_to_mm(value):
+    if value is None or len(value) !=1:
+        return None
+    try:
+        inch = float(value[0])
+        mm = round((inch * 25.4), 2)
+        return mm
+    except:
+        return None
+
+def _convert_to_forecast(value):
+    if value is None or len(value) != 1 or not re.match(r'[0-9]+', value[0]):
+        return None
+    try:
+        index = ['partly_cloudy', 'sunny', 'cloudy', 'rainy', 'snowy']
+        forecast_int = int(value[0])
+        forecast = index[forecast_int]
+        return forecast
+    except:
+        return None
 
 def _convert_to_string(value):
     if value is None or len(value) != 1:
@@ -33,10 +53,17 @@ def _convert_to_string(value):
 _SENSOR_VALUES_MAP = {
     'ot': ('temperature_celsius', _convert_to_float),
     'oh': ('humidity_relative', _convert_to_positive_int),
+    'wd': ('wind_direction', _convert_to_positive_int),
+    'wg': ('wind_gust', _convert_to_float),
+    'ws': ('wind_speed', _convert_to_float),
+    'rr': ('rain_rate', _convert_to_mm),
+    'rfa': ('rain_total', _convert_to_mm),
+    'uvh': ('uv_index', _convert_to_positive_int),
 }
 
 _GLOBAL_VALUES_MAP = {
     'baro': ('pressure_hPa', _convert_to_positive_int),
+    'wfor': ('weather_forecast', _convert_to_forecast),
 }
 
 

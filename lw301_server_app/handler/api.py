@@ -41,3 +41,12 @@ class PressureHistoryApiHandler(_HistoryApiHandler):
 
 class HumidityHistoryApiHandler(_HistoryApiHandler):
     measurement = 'humidity'
+
+class WindHistoryApiHandler(_HistoryApiHandler):
+    measurement= 'wind'
+
+class RainHistoryApiHandler(_HistoryApiHandler):
+    measurement= 'rain'
+
+class UVHistoryApiHandler(_HistoryApiHandler):
+    measurement= 'uv'
