@@ -53,26 +53,4 @@ class MqttTrigger(Trigger):
 
         ch = "" if ('channel' not in v or v['channel'] is None) else "_{}".format(v['channel'])
 
-        self.client.publish("lw301/{}{}/{}".format(v['mac'], ch, measurement), json.dumps(v))
-
-    #     # delay processing for next ioloop tick
-    #     self.ioloop.add_callback(
-    #         self._send_data,
-    #         value=value,
-    #         measurement=measurement,
-    #         write_url=self.app_options.influxdb_writeurl,
-    #         user=self.app_options.influxdb_user,
-    #         password=self.app_options.influxdb_password,
-    #     )
-    #
-    # def _value(self, value):
-    #     if isinstance(value, int):
-    #         return '{}i'.format(value)
-    #     elif isinstance(value, float):
-    #         return '{:0.2f}'.format(value)
-    #     return '{}'.format(value)
-    #
-    # def _tag_value(self, value):
-    #     if isinstance(value, int):
-    #         value = str(value)
-    #     return self._value(value)
+        self.client.publish("lw301/{}/{}".format(v['mac'], measurement), json.dumps(v))
