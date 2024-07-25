@@ -30,7 +30,7 @@ class MqttTrigger(Trigger):
     def __init__(self, ioloop: IOLoop, app_options: OptionParser):
         super().__init__(ioloop, app_options)
         # self.http_client = AsyncHTTPClient()
-        self.client = mqtt.Client()
+        self.client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1)
 
         if self.app_options.mqtt_user is not None:
             self.client.username_pw_set(
