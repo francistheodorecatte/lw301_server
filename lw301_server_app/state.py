@@ -7,18 +7,13 @@ Humidity = collections.namedtuple('Humidity', ['mac', 'channel', 'relative'])
 Wind = collections.namedtuple('Wind', ['mac', 'channel', 'direction', 'gust', 'average'])
 Rain = collections.namedtuple('Rain', ['mac', 'channel', 'rate', 'total'])
 UV = collections.namedtuple('UV', ['mac', 'channel', 'index'])
-
-class Pressure(collections.namedtuple('Pressure', ['mac', 'hPa'])):
-    @property
-    def mmHg(self):
-        return int(self.hPa * 0.7500617)
-
+LW301 = collections.namedtuple('LW301', ['mac', 'hPa', 'forecast'])
 
 class State:
     def __init__(self, history_limit=3000):
         self.temperature_history = []
         self.humidity_history = []
-        self.pressure_history = []
+        self.lw301_history = []
         self.wind_history = []
         self.rain_history = []
         self.uv_history = []

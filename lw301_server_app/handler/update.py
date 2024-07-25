@@ -25,7 +25,7 @@ class UpdateHandler(lw301_server_app.handler.Base):
         values = []
 
         if body.global_values and 'pressure_hPa' in body.global_values:
-            values.append(('pressure', state.Pressure(mac=body.mac, hPa=body.global_values['pressure_hPa'])))
+            values.append(('lw301', state.LW301(mac=body.mac, hPa=body.global_values['pressure_hPa'], forecast=body.global_values['weather_forecast'])))
 
         if body.sensor_values and 'temperature_celsius' in body.sensor_values:
             values.append((
