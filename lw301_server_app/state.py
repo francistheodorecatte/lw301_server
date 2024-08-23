@@ -2,12 +2,12 @@
 import datetime
 import collections
 
-Temperature = collections.namedtuple('Temperature', ['mac', 'channel', 'celsius'])
-Humidity = collections.namedtuple('Humidity', ['mac', 'channel', 'relative'])
-Wind = collections.namedtuple('Wind', ['mac', 'channel', 'direction', 'gust', 'average'])
-Rain = collections.namedtuple('Rain', ['mac', 'channel', 'rate', 'total'])
-UV = collections.namedtuple('UV', ['mac', 'channel', 'index'])
-LW301 = collections.namedtuple('LW301', ['mac', 'hPa', 'forecast'])
+Temperature = collections.namedtuple('Temperature', ['mac', 'channel', 'id', 'celsius'])
+Humidity = collections.namedtuple('Humidity', ['mac', 'channel', 'id', 'relative'])
+Wind = collections.namedtuple('Wind', ['mac', 'channel', 'id', 'direction', 'gust', 'average'])
+Rain = collections.namedtuple('Rain', ['mac', 'channel', 'id', 'rate', 'total'])
+UV = collections.namedtuple('UV', ['mac', 'channel', 'id', 'index'])
+LW301 = collections.namedtuple('LW301', ['mac', 'channel', 'id', 'hPa', 'forecast'])
 
 class State:
     def __init__(self, history_limit=3000):
