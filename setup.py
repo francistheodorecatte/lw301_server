@@ -3,8 +3,8 @@ from setuptools import setup, find_packages
 
 setup(
     name='lw301-server',
-    version='0.0.3',
-    install_requires=['tornado>=5.1, <6.0', 'paho-mqtt'],
+    version='0.0.4',
+    install_requires=['tornado>=6.0', 'paho-mqtt'],
     tests_require=['nose', 'pycodestyle'],
     test_suite='nose.collector',
     scripts=['lw301_server'],

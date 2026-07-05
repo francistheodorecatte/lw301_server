@@ -3,6 +3,7 @@
 import logging
 import sys
 import os.path
+import asyncio
 
 import tornado.options
 from tornado.options import define, OptionParser
@@ -75,6 +76,12 @@ def init_triggers(options: OptionParser, ioloop: IOLoop):
 
 
 if __name__ == "__main__":
+    try:
+        loop = asyncio.get_running_loop()
+    except RuntimeError:
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+
     ioloop = IOLoop.current()
     options = parse_options()
     application = build_app(debug=options.debug)
