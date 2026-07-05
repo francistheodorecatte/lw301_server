@@ -9,7 +9,7 @@ python3 setup.py install
 Requirements: 
 
 * python 3.10+
-* tornado 5.1.1
+* tornado 6.0+
 
 ## Usage
 
