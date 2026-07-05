@@ -7,6 +7,10 @@ EnvironmentFile=/etc/default/lw301_server
 User=lw301_server
 Restart=on-failure
 Type=simple
+PrivateTmp=yes
+PrivateDevices=yes
+NoNewPrivileges=yes
+ProtectHome=yes
 
 [Install]
 WantedBy=multi-user.target

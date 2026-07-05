@@ -1,0 +1,2 @@
+PYTHONWARNINGS=ignore
+daemon_args='--address="0.0.0.0" --port=80 --enable-mqtt --mqtt-host="CHANGEME" --mqtt-user="CHANGEME" --mqtt-password="CHANGEME"'
